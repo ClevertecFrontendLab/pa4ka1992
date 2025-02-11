@@ -18,10 +18,8 @@ module.exports = {
         },
         setupNodeEvents(on) {
             on('before:browser:launch', (browser, launchOptions) => {
-                if (browser.name === 'electron') {
-                    launchOptions.preferences.width = browserWidth;
-                    launchOptions.preferences.height = browserHeight;
-                }
+                launchOptions.preferences.width = browserWidth;
+                launchOptions.preferences.height = browserHeight;
 
                 return launchOptions;
             });
