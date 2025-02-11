@@ -18,6 +18,13 @@ module.exports = {
         },
         setupNodeEvents(on) {
             on('before:browser:launch', (browser, launchOptions) => {
+                if (browser.family === 'chromium') {
+                    launchOptions.args.push(`--window-size=${browserWidth},${browserHeight}`);
+                } else if (browser.family === 'firefox') {
+                    launchOptions.args.push(`--width=${browserWidth}`);
+                    launchOptions.args.push(`--height=${browserHeight}`);
+                }
+
                 launchOptions.preferences.width = browserWidth;
                 launchOptions.preferences.height = browserHeight;
 
